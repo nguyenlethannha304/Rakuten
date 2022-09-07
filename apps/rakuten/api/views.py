@@ -20,8 +20,8 @@ def is_response_success(response):
 class RakutenSearchAPIView(APIView):
     # START GET METHOD
     def get(self, request, *args, **kwargs):
-        enpoint = self.get_endpoint(request, *args, **kwargs)
-        rakuten_response = send_request_to_rakuten_api(enpoint)
+        endpoint = self.get_endpoint(request, *args, **kwargs)
+        rakuten_response = send_request_to_rakuten_api(endpoint)
         if is_response_success(rakuten_response):
             handled_response = self.handle_response(rakuten_response)
             return Response(data=handled_response, status=HTTPStatus.OK)
